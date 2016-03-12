@@ -10,7 +10,6 @@ class PathInstaller extends LibraryInstaller {
 	 */
 	public function getInstallPath(PackageInterface $package)
 	{
-		$basePath = $this->getPath('base');
 		$root = $this->composer->getPackage();
 		$rootExtra = $root->getExtra();
 
@@ -18,14 +17,14 @@ class PathInstaller extends LibraryInstaller {
 
 		if (isset($rootExtra['paths'][$packageName]))
 		{
-			return $basePath.'/'.$rootExtra['paths'][$packageName];
+			return $rootExtra['paths'][$packageName];
 		}
 
 		$packageExtra = $package->getExtra();
 
 		if (isset($packageExtra['path']))
 		{
-			return $basePath.'/'.$packageExtra['path'];
+			return $packageExtra['path'];
 		}
 	}
 
